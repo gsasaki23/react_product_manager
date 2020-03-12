@@ -6,6 +6,7 @@ export default () => {
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState('');
 
+    // When a new form is submitted, POST request to backend
     const onSubmitHandler = e => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/products/new', {

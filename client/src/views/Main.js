@@ -7,7 +7,7 @@ export default () => {
     const [products, setProducts] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
-    // For initial call - get list of all products
+    // set products to list of all products
     useEffect(()=>{
         axios.get('http://localhost:8000/api/products')
             .then(res=>{
