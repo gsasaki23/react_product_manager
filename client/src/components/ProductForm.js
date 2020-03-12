@@ -21,15 +21,15 @@ export default () => {
     return (
         <form onSubmit={onSubmitHandler}>
             <p>
-                <label>Title</label>
+                <label>Title (Text)</label>
                 <input type="text" onChange={e=>setTitle(e.target.value)}/>
             </p>
             <p>
-                <label>Price</label>
+                <label>Price (Cents)</label>
                 <input type="number" min="0" onChange={e=>setPrice(e.target.value)}/>
             </p>
             <p>
-                <label>Description</label>
+                <label>Description (Text)</label>
                 <input type="text" onChange={e=>setDescription(e.target.value)}/>
             </p>
             <input type="submit"/>

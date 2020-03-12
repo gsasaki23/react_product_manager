@@ -17,11 +17,20 @@ export default () => {
             .catch(err=>console.log("Error: ", err))
     },[])
 
+    // Filter over products, if any product's ID matches the one that got removed, filter it out
+    const removeFromDom = productID => {
+        setProducts(
+            products.filter(product => product._id != productID)
+        )
+    }
+
     return (
         <>
             <h1>Product Manager</h1>
             <ProductForm />
-            <ProductList products={products}/>
+            <hr/>
+            {/* only loads if loaded. sends list of products AND function removeFromDom to child class */}
+            {loaded && <ProductList products={products} removeFromDom={removeFromDom}/>}
         </>
     )
 }
