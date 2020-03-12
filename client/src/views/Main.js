@@ -32,7 +32,7 @@ export default () => {
     // Filter over products, if any product's ID matches the one that got removed, filter it out
     const removeFromDom = productID => {
         setProducts(
-            products.filter(product => product._id != productID)
+            products.filter(product => product._id !== productID)
         )
     }
 

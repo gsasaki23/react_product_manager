@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import axios from 'axios';
 
 export default (props) => {
     const [title, setTitle] = useState(props.initTitle);
@@ -11,19 +10,6 @@ export default (props) => {
         e.preventDefault();
         props.onSubmitProp({title,price,description});
     }
-
-    // v  Was refactored out to Main! v
-    // When a new form is submitted, POST request to backend
-    // const onSubmitHandler = e => {
-    //     e.preventDefault();
-    //     axios.post('http://localhost:8000/api/products/new', {
-    //         title,
-    //         price,
-    //         description
-    //     })
-    //         .then(res=>console.log("Response: ",res))
-    //         .catch(err=>console.log("Error: ",err))
-    // }
 
     return (
         <form onSubmit={onSubmitHandler}>

@@ -14,7 +14,7 @@ export default (props) => {
                 setProduct(res.data);
                 setLoaded(true);
             })
-    }, [])
+    }, [props])
 
     // When a new form is submitted, PUT request to backend
     const updateProduct = product => {

@@ -17,7 +17,7 @@ export default (props) => {
     return (
         <div>
             {props.products.map((product, idx)=>{
-                return <div style={{display:"block"}}>
+                return <div key={idx} style={{display:"block"}}>
                     <a href={"/products/" + product._id}>{product.title}</a> <button onClick= {e=>{onClickHandler(product._id)}}>Delete</button>
                 </div>
             })}
