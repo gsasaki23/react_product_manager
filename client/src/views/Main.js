@@ -7,7 +7,7 @@ export default () => {
     const [products, setProducts] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
-    // set products to list of all products
+    // set products to list of all products from DB
     useEffect(()=>{
         axios.get('http://localhost:8000/api/products')
             .then(res=>{
@@ -17,8 +17,7 @@ export default () => {
             .catch(err=>console.log("Error: ", err))
     },[])
 
-    // To be used in ProductForm
-    // 
+    // Called back from ProductForm, creates new product in DB
     const createProduct = product => {
         axios.post('http://localhost:8000/api/products/new', product)
             .then(res=>{
@@ -28,21 +27,13 @@ export default () => {
             .catch(err=>console.log("Error: ",err))
     }
 
-    // To be used in ProductList
-    // Filter over products, if any product's ID matches the one that got removed, filter it out
-    const removeFromDom = productID => {
-        setProducts(
-            products.filter(product => product._id !== productID)
-        )
-    }
-
     return (
         <>
             <h1>Product Manager</h1>
             <ProductForm onSubmitProp={createProduct} initTitle="" initPrice={0} initDescription=""/>
             <hr/>
             {/* only loads if loaded. sends list of products AND function removeFromDom to child class */}
-            {loaded && <ProductList products={products} removeFromDom={removeFromDom}/>}
+            {loaded && <ProductList data={{products,setProducts}}/>}
         </>
     )
 }
