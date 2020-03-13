@@ -23,7 +23,6 @@ export default (props) => {
             <h2>{product.title}</h2>
             <h3>Price: ${product.price/100}</h3>
             <h3>Description: {product.description}</h3>
-            <a href="/products" onClick={onClickHandler} style={{display:"block"}}>Delete</a>
             <Link to={"/products/" + product._id + "/edit"}>Edit Info</Link> <Link to="/products">Back</Link>
         </div>
     )

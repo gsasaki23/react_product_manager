@@ -2,18 +2,20 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import {Link, navigate} from '@reach/router';
 import ProductForm from '../components/ProductForm';
+import DeleteButton from '../components/DeleteButton';
 
 export default (props) => {
-    const [product,setProduct] = useState();
+    const [product,setProduct] = useState({});
     const [loaded,setLoaded] = useState(false);
 
     // On initial load, get DB info
-    useEffect(() => {        
+    useEffect(() => {     
         axios.get("http://localhost:8000/api/products/" + props.id)
             .then(res => {
-                setProduct(res.data);
+                setProduct({...res.data});
                 setLoaded(true);
             })
+            .catch(console.log)
     }, [props])
 
     // When a new form is submitted, PUT request to backend
@@ -36,7 +38,7 @@ export default (props) => {
                 initPrice={product.price}
                 initDescription={product.description}
             />}
-            
+            {loaded && <DeleteButton productID={product._id} successfulCallback={() => navigate("/")} />}
             <Link to={"/products/" + props.id}>Back</Link>
         </div>
     )
